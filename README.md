@@ -3,7 +3,7 @@ Hacer un programa que detecte cuadrilateros, y que muestre su area y perimetro.
 
 ## Integrantes:
 1. Alex Gallardo/Stevendotcom = Nicolas Gallardo -> <nicolas.gallardo@estudiante.imagecampus.edu.ar>
-2. Francisco Jonas/4FranJonas2 = <francisco.jonas@estudiante.imagecampus.edu.ar>
+2. Francisco/4FranJonas2 = Francisco Jonas -> <francisco.jonas@estudiante.imagecampus.edu.ar>
 3. (Añadir sus nombres de usuario y luego su nombre y email)
 
 ## Trello
