@@ -5,8 +5,8 @@ const int LINES_AMOUNT = 4;
 
 struct Line
 {
-	Vector2 start;
-	Vector2 finish;
+	Vector2 Start;
+	Vector2 Finish;
 };
 
 /**
@@ -15,6 +15,11 @@ struct Line
  */
 Vector2 GetMouseCoord();
 
-void MakeLine(Vector2 point1, Vector2 point2, Line lines[LINES_AMOUNT]);
+/**
+ * @brief Draw a line on screen with color red and save it on an array
+ * @param line
+ * @param lines 
+ */
+void DrawLine(Line &line, Line lines[LINES_AMOUNT]);
 
-void DetectCorner();
+bool IsAQuad();
