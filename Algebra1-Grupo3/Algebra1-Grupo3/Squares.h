@@ -5,8 +5,8 @@ const int LINES_AMOUNT = 4;
 
 struct Line
 {
-	Vector2 start;
-	Vector2 finish;
+	Vector2 Start;
+	Vector2 Finish;
 };
 
 /**
