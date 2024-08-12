@@ -22,4 +22,9 @@ Vector2 GetMouseCoord();
  */
 void DrawLine(Line &line, Line lines[LINES_AMOUNT]);
 
-bool IsAQuad();
+/**
+ * @brief checks if lines form a quad
+ * @param lines Array with lines
+ * @return true if is it a quad
+ */
+bool IsAQuad(Line lines[LINES_AMOUNT]);
