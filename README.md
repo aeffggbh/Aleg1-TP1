@@ -9,9 +9,8 @@ Hacer un programa que detecte cuadrilateros, y que muestre su area y perimetro.
 https://trello.com/b/dVjE0PGx/tp1
 
 ## Instrucciones de uso
-TODO
+
 
 # Instrucciones de instalacion
 1. Clonar
 2. Compilar en Visual Studio 2022
-
