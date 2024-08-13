@@ -2,7 +2,7 @@
 #include "raylib.h"
 
 const int LINES_AMOUNT = 4;
-extern int LINE_POS = 0;
+const int LINE_POS = 0;
 
 struct Line
 {
