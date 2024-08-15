@@ -9,9 +9,12 @@ int main()
     const int screenHeight = 600;
 
     int currentLine = 0;
+    int currentPosition = START;
+    bool lineDrawn = false;
 
-    //vector de prueba
-    Vector2 vectorTest;
+    Vector2 mousePos;
+
+    Line myLines[LINES_AMOUNT];
     
     InitWindow(screenWidth, screenHeight, "Quad test");
     SetTargetFPS(60);
@@ -20,14 +23,40 @@ int main()
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
-            vectorTest = GetMouseCoord();
+            mousePos = GetMouseCoord();
+
+
+            if (!myLines[currentLine].Done)
+            {
+                if (currentPosition == START)
+                {
+                    myLines[currentLine].Start.x = mousePos.x;
+                    myLines[currentLine].Start.y = mousePos.y;
+                    currentPosition = FINISH;
+                }
+                else
+                {
+                    myLines[currentLine].Finish.x = mousePos.x;
+                    myLines[currentLine].Finish.y = mousePos.y;
+                    currentPosition = START;
+                    myLines[currentLine].Done = true;
+                    currentLine++;
+                }
+            }
         }
         
         BeginDrawing();
 
         ClearBackground(BLACK);
         DrawText("Clic on two positions!", 20, 20, 20, WHITE);
-
+        
+        for (int i = 0; i < LINES_AMOUNT; i++)
+        {
+            if (myLines[i].Done)
+            {
+                DrawLine(myLines[i], myLines, i);
+            }
+        }
         EndDrawing();
     }
     CloseWindow();

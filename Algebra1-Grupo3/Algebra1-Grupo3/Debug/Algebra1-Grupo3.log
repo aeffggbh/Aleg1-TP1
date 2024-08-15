@@ -1,10 +1,2 @@
-﻿  Squares.cpp
-  main.cpp
-D:\Image\projects\c++\Algebra-2024\repo-algebra\DEFINITIVE-FOLDER\Aleg1-TP1\Algebra1-Grupo3\Algebra1-Grupo3\Squares.cpp(7,22): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Algebra-2024\repo-algebra\DEFINITIVE-FOLDER\Aleg1-TP1\Algebra1-Grupo3\Algebra1-Grupo3\Squares.cpp(8,22): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-D:\Image\projects\c++\Algebra-2024\repo-algebra\DEFINITIVE-FOLDER\Aleg1-TP1\Algebra1-Grupo3\Algebra1-Grupo3\Squares.cpp(15,65): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\Image\projects\c++\Algebra-2024\repo-algebra\DEFINITIVE-FOLDER\Aleg1-TP1\Algebra1-Grupo3\Algebra1-Grupo3\Squares.cpp(15,50): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\Image\projects\c++\Algebra-2024\repo-algebra\DEFINITIVE-FOLDER\Aleg1-TP1\Algebra1-Grupo3\Algebra1-Grupo3\Squares.cpp(15,35): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-D:\Image\projects\c++\Algebra-2024\repo-algebra\DEFINITIVE-FOLDER\Aleg1-TP1\Algebra1-Grupo3\Algebra1-Grupo3\Squares.cpp(15,21): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-  Generando código...
+﻿  main.cpp
   Algebra1-Grupo3.vcxproj -> D:\Image\projects\c++\Algebra-2024\repo-algebra\DEFINITIVE-FOLDER\Aleg1-TP1\Algebra1-Grupo3\Debug\Algebra1-Grupo3.exe
