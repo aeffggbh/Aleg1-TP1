@@ -7,23 +7,28 @@ int main()
 {
     const int screenWidth = 800;
     const int screenHeight = 600;
+
+    int currentLine = 0;
+
     //vector de prueba
     Vector2 vectorTest;
     
-    InitWindow(screenWidth, screenHeight, "Raylib basic window");
+    InitWindow(screenWidth, screenHeight, "Quad test");
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("It works!", 20, 20, 20, BLACK);
-        EndDrawing();
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             vectorTest = GetMouseCoord();
         }
         
+        BeginDrawing();
+
+        ClearBackground(BLACK);
+        DrawText("Clic on two positions!", 20, 20, 20, WHITE);
+
+        EndDrawing();
     }
     CloseWindow();
     return 0;

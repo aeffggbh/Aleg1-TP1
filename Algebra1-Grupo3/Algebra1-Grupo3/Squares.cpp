@@ -10,11 +10,11 @@ Vector2 GetMouseCoord()
 	return vector;
 }
 
-void DrawLine(Line line, Line lines[LINES_AMOUNT])
+void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos)
 {
 	DrawLine(line.Start.x, line.Start.y, line.Finish.x, line.Finish.y, RED);
 
-	lines[LINE_POS] = line;
+	lines[currentPos] = line;
 }
 
 bool IsAQuad(Line lines[LINES_AMOUNT])

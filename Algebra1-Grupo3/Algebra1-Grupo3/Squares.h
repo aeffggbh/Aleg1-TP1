@@ -2,7 +2,6 @@
 #include "raylib.h"
 
 const int LINES_AMOUNT = 4;
-const int LINE_POS = 0;
 
 struct Line
 {
@@ -21,7 +20,7 @@ Vector2 GetMouseCoord();
  * @param line
  * @param lines 
  */
-void DrawLine(Line line, Line lines[LINES_AMOUNT]);
+void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos);
 
 /**
  * @brief checks if lines form a quad
