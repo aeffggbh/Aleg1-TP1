@@ -21,7 +21,7 @@ Vector2 GetMouseCoord();
 /**
  * @brief Draw a line on screen with color red and save it in an array
  * @param line
- * @param lines 
+ * @param lines
  */
 void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos);
 
