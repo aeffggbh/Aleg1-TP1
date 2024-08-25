@@ -9,7 +9,17 @@ struct Line
 {
 	Vector2 Start;
 	Vector2 Finish;
+	Vector2 Corners[4];
+	int CornersAmount;
 	bool Done = false;
+};
+
+struct Quad
+{
+	Vector2 C1;
+	Vector2 C2;
+	Vector2 C3;
+	Vector2 C4;
 };
 
 /**
@@ -26,8 +36,13 @@ Vector2 GetMouseCoord();
 void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos);
 
 /**
- * @brief checks if lines form a quad
- * @param lines Array with lines
- * @return true if is it a quad
+ * @brief 
+ * @param lines 
+ * @param firstCorner 
+ * @param thisCorner 
+ * @param quadCorners 
+ * @param segments 
+ * @param returnedQuad 
+ * @return 
  */
-bool IsAQuad(Line lines[LINES_AMOUNT]);
+bool IsAQuad(Line lines[], Vector2 firstCorner, Vector2 thisCorner, Vector2 quadCorners[4], int segments, Quad& returnedQuad);
