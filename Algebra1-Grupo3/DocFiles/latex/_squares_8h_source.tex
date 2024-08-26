@@ -1,0 +1,42 @@
+\doxysection{Squares.\+h}
+\hypertarget{_squares_8h_source}{}\label{_squares_8h_source}\index{Algebra1-\/Grupo3/Squares.h@{Algebra1-\/Grupo3/Squares.h}}
+\mbox{\hyperlink{_squares_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <raylib.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_squares_8h_ace3f6f3b5e5d5d86c6513472719f6944}{LINES\_AMOUNT}}\ =\ 4;}
+\DoxyCodeLine{00006\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_squares_8h_a5dcd90c2b6de5b124211b52133bb6209}{START}}\ =\ 1;}
+\DoxyCodeLine{00007\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_squares_8h_a498fdc852c6d2b83375bbb008b2ea6e6}{FINISH}}\ =\ 2;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_line}{Line}}}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ Vector2\ \mbox{\hyperlink{struct_line_ad988da22fdb7e398e091d217b99a11fe}{Start}};}
+\DoxyCodeLine{00012\ \ \ \ \ Vector2\ \mbox{\hyperlink{struct_line_a4f8132d0435ad0eaf01c4d897d4c048d}{Finish}};}
+\DoxyCodeLine{00013\ \ \ \ \ Vector2\ \mbox{\hyperlink{struct_line_ac57cc296b545492031423523f7161562}{Corners}}[4];}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_line_a7887bcaedb363d4b3f0d9754438af9b6}{CornersAmount}};}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_line_a963a4f147e453e5510ad987685301dfd}{Done}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_quad}{Quad}}}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ Vector2\ \mbox{\hyperlink{struct_quad_ac93a2542733536da4c5592137c61897b}{C1}};}
+\DoxyCodeLine{00021\ \ \ \ \ Vector2\ \mbox{\hyperlink{struct_quad_a4cf4d122804a93e4a10376850ca168e8}{C2}};}
+\DoxyCodeLine{00022\ \ \ \ \ Vector2\ \mbox{\hyperlink{struct_quad_a0518c065a1e465c7f6a8e31d4b8b3ffa}{C3}};}
+\DoxyCodeLine{00023\ \ \ \ \ Vector2\ \mbox{\hyperlink{struct_quad_a63c7cbcfa7fe9659e55c15f589792274}{C4}};}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00030\ Vector2\ \mbox{\hyperlink{_squares_8h_a8f6b8d9d981378c12362d841c9abf9e3}{GetMouseCoord}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_squares_8h_a66083a6d535ef3dd679a0e73557707a8}{DrawLine}}(\mbox{\hyperlink{struct_line}{Line}}\ line,\ \mbox{\hyperlink{struct_line}{Line}}\ lines[\mbox{\hyperlink{_squares_8h_ace3f6f3b5e5d5d86c6513472719f6944}{LINES\_AMOUNT}}],\ \textcolor{keywordtype}{int}\ currentPos);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_squares_8h_a79ad6725af184a80dd84587e2466bdd0}{IsAQuad}}(\mbox{\hyperlink{struct_line}{Line}}\ lines[],\ Vector2\ firstCorner,\ Vector2\ thisCorner,\ Vector2\ quadCorners[4],\ \textcolor{keywordtype}{int}\ segments,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Quad>}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ quadList);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_squares_8h_a05a464f38550e21c29662513ff90892a}{IsSameQuad}}(Vector2\ quad1[],\ \mbox{\hyperlink{struct_quad}{Quad}}\&\ quad2);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{_squares_8h_adcd70f43e1395efb144155b8cc0af93e}{IsSameCorner}}(\textcolor{keyword}{const}\ Vector2\&\ corner1,\ \textcolor{keyword}{const}\ Vector2\&\ corner2);}
+
+\end{DoxyCode}

@@ -1,0 +1,83 @@
+\doxysection{Algebra1-\/\+Grupo3/is\+AQuad.cpp File Reference}
+\hypertarget{is_a_quad_8cpp}{}\label{is_a_quad_8cpp}\index{Algebra1-\/Grupo3/isAQuad.cpp@{Algebra1-\/Grupo3/isAQuad.cpp}}
+{\ttfamily \#include "{}Squares.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{is_a_quad_8cpp_a79ad6725af184a80dd84587e2466bdd0}{Is\+AQuad}} (\mbox{\hyperlink{struct_line}{Line}} lines\mbox{[}$\,$\mbox{]}, Vector2 first\+Corner, Vector2 this\+Corner, Vector2 quad\+Corners\mbox{[}4\mbox{]}, int segments, std\+::vector$<$ \mbox{\hyperlink{struct_quad}{Quad}} $>$ quad\+List)
+\begin{DoxyCompactList}\small\item\em Detects if it is a \doxylink{struct_quad}{Quad} and if it is, it appends to quad\+List. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{is_a_quad_8cpp_a05a464f38550e21c29662513ff90892a}{Is\+Same\+Quad}} (Vector2 quad1\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{struct_quad}{Quad}} \&quad2)
+\begin{DoxyCompactList}\small\item\em checks whether 2 quads are the same quad \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{is_a_quad_8cpp_adcd70f43e1395efb144155b8cc0af93e}{Is\+Same\+Corner}} (const Vector2 \&corner1, const Vector2 \&corner2)
+\begin{DoxyCompactList}\small\item\em check whether two corners are the same or nor \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{is_a_quad_8cpp_a79ad6725af184a80dd84587e2466bdd0}\index{isAQuad.cpp@{isAQuad.cpp}!IsAQuad@{IsAQuad}}
+\index{IsAQuad@{IsAQuad}!isAQuad.cpp@{isAQuad.cpp}}
+\doxysubsubsection{\texorpdfstring{IsAQuad()}{IsAQuad()}}
+{\footnotesize\ttfamily \label{is_a_quad_8cpp_a79ad6725af184a80dd84587e2466bdd0} 
+bool Is\+AQuad (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_line}{Line}}}]{lines}{\mbox{[}$\,$\mbox{]}, }\item[{Vector2}]{first\+Corner}{, }\item[{Vector2}]{this\+Corner}{, }\item[{Vector2}]{quad\+Corners}{\mbox{[}4\mbox{]}, }\item[{int}]{segments}{, }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_quad}{Quad}} $>$}]{quad\+List}{}\end{DoxyParamCaption})}
+
+
+
+Detects if it is a \doxylink{struct_quad}{Quad} and if it is, it appends to quad\+List. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lines} & array with lines \\
+\hline
+{\em first\+Corner} & start of possible quad \\
+\hline
+{\em this\+Corner} & which corner is currently at \\
+\hline
+{\em quad\+Corners} & array with possible corners \\
+\hline
+{\em segments} & int with the amount of segments that have been found \\
+\hline
+{\em quad\+List} & vector with quads \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether a quad was found or not 
+\end{DoxyReturn}
+\Hypertarget{is_a_quad_8cpp_adcd70f43e1395efb144155b8cc0af93e}\index{isAQuad.cpp@{isAQuad.cpp}!IsSameCorner@{IsSameCorner}}
+\index{IsSameCorner@{IsSameCorner}!isAQuad.cpp@{isAQuad.cpp}}
+\doxysubsubsection{\texorpdfstring{IsSameCorner()}{IsSameCorner()}}
+{\footnotesize\ttfamily \label{is_a_quad_8cpp_adcd70f43e1395efb144155b8cc0af93e} 
+bool Is\+Same\+Corner (\begin{DoxyParamCaption}\item[{const Vector2 \&}]{corner1}{, }\item[{const Vector2 \&}]{corner2}{}\end{DoxyParamCaption})}
+
+
+
+check whether two corners are the same or nor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em corner1} & first corner to compare \\
+\hline
+{\em corner2} & second corner to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether is same cornet or not 
+\end{DoxyReturn}
+\Hypertarget{is_a_quad_8cpp_a05a464f38550e21c29662513ff90892a}\index{isAQuad.cpp@{isAQuad.cpp}!IsSameQuad@{IsSameQuad}}
+\index{IsSameQuad@{IsSameQuad}!isAQuad.cpp@{isAQuad.cpp}}
+\doxysubsubsection{\texorpdfstring{IsSameQuad()}{IsSameQuad()}}
+{\footnotesize\ttfamily \label{is_a_quad_8cpp_a05a464f38550e21c29662513ff90892a} 
+bool Is\+Same\+Quad (\begin{DoxyParamCaption}\item[{Vector2}]{quad1}{\mbox{[}$\,$\mbox{]}, }\item[{\mbox{\hyperlink{struct_quad}{Quad}} \&}]{quad2}{}\end{DoxyParamCaption})}
+
+
+
+checks whether 2 quads are the same quad 
+
+
+\begin{DoxyParams}{Parameters}
+{\em quad1} & first quad to compare \\
+\hline
+{\em quad2} & second quad to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether is same quad or not 
+\end{DoxyReturn}
