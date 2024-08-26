@@ -4,7 +4,8 @@
 using namespace std;
 
 void SearchCorner(Line line[], Line corners[]);
-void lineIntersecctions(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Line intersections[]);
+void LineIntersecctions(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Line intersections[]);
+void AddCorner(Line intersections[], int newY, int newX);
 
 int main()
 {
@@ -82,13 +83,13 @@ void SearchCorner(Line line[], Line corners[])
 		{
 			if (auxLine.Start.x != line[j].Start.x && auxLine.Start.y != line[j].Start.y)
 			{
-				lineIntersecctions(auxLine.Start.x, auxLine.Start.y, auxLine.Finish.x, auxLine.Finish.y, line[j].Start.x, line[j].Start.y, line[j].Finish.x, line[j].Finish.y, corners);
+				LineIntersecctions(auxLine.Start.x, auxLine.Start.y, auxLine.Finish.x, auxLine.Finish.y, line[j].Start.x, line[j].Start.y, line[j].Finish.x, line[j].Finish.y, corners);
 			}
 		}
 	}
 }
 
-void lineIntersecctions(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Line intersections[])
+void LineIntersecctions(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Line intersections[])
 {
 	Line auxCorner;
 
@@ -103,9 +104,23 @@ void lineIntersecctions(float x1, float y1, float x2, float y2, float x3, float 
 		float intersectionX = x1 + (uA * (x2 - x1));
 		float intersectionY = y1 + (uA * (y2 - y1));
 
-		intersections.Intersect.x = intersectionX;
-		intersections.Intersect.y = intersectionY;
+		AddCorner(intersections, intersectionY, intersectionX);
 
 		DrawCircle(intersectionX, intersectionY, 5, RED);
 	}
+}
+
+void AddCorner(Line intersections[], int newY, int newX)
+{
+	for (int i = 0; i < MAX_CORNERS; i++)
+	{
+		if (!intersections[i].isThereACorner)
+		{
+			intersections[i].Intersect.x = newX;
+			intersections[i].Intersect.y = newY;
+			intersections[i].isThereACorner = true;
+			return;
+		}
+	}
+
 }

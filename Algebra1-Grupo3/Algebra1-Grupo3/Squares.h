@@ -13,6 +13,7 @@ struct Line
 	Vector2 Finish;
 	Vector2 Intersect;
 	bool Done = false;
+	bool isThereACorner = false;
 };
 
 /**
