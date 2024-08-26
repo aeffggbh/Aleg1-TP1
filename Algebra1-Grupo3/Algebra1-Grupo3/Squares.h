@@ -4,11 +4,14 @@
 const int LINES_AMOUNT = 4;
 const int START = 1;
 const int FINISH = 2;
+const int MAX_CORNERS = 6;
+
 
 struct Line
 {
 	Vector2 Start;
 	Vector2 Finish;
+	Vector2 Intersect;
 	bool Done = false;
 };
 

@@ -3,6 +3,8 @@
 
 using namespace std;
 
+void SearchCorner(Line line);
+
 int main()
 {
 	const int screenWidth = 800;
@@ -15,6 +17,7 @@ int main()
 	Vector2 mousePos;
 
 	Line myLines[LINES_AMOUNT];
+	Line Intersect[MAX_CORNERS];
 
 	InitWindow(screenWidth, screenHeight, "Quad test");
 	SetTargetFPS(60);
@@ -24,7 +27,6 @@ int main()
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			mousePos = GetMouseCoord();
-
 
 			if (!myLines[currentLine].Done && currentLine < LINES_AMOUNT)
 			{
@@ -45,6 +47,8 @@ int main()
 			}
 		}
 
+		SearchCorner(myLines, Intersect);
+
 		BeginDrawing();
 
 		ClearBackground(BLACK);
@@ -60,7 +64,48 @@ int main()
 		EndDrawing();
 	}
 	CloseWindow();
-
 	return 0;
 }
 
+void SearchCorner(Line line[], Line corners[])
+{
+	Line auxLine;
+
+	for (int i = 0; i < LINES_AMOUNT; i++)
+	{
+		auxLine = line[i];
+
+		for (int j = 0; j < LINES_AMOUNT; j++)
+		{
+			if (auxLine.Start != line[j])
+			{
+
+			}
+
+
+		}
+	}
+}
+
+bool lineLine(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4)
+{
+
+	// calculate the distance to intersection point
+	float uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+	float uB = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+
+	// if uA and uB are between 0-1, lines are colliding
+	if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1)
+	{
+
+		// optionally, draw a circle where the lines meet
+		float intersectionX = x1 + (uA * (x2 - x1));
+		float intersectionY = y1 + (uA * (y2 - y1));
+		fill(255, 0, 0);
+
+		DrawCircle(intersectionX, intersectionY, 20, RED);
+
+		return true;
+	}
+	return false;
+}
