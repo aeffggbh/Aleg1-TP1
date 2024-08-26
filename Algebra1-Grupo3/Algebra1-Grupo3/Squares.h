@@ -1,5 +1,5 @@
 #pragma once
-#include "raylib.h"
+#include <raylib.h>
 
 const int LINES_AMOUNT = 4;
 const int START = 1;
