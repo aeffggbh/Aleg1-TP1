@@ -43,12 +43,12 @@ void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos);
  * @param thisCorner 
  * @param quadCorners 
  * @param segments 
- * @param QuadList 
+ * @param quadList 
  * @return 
  */
 bool IsAQuad(Line lines[], Vector2 firstCorner, Vector2 thisCorner, Vector2 quadCorners[4], int segments,
              std::vector<Quad>
-             QuadList);
+             quadList);
 
 /**
  * @brief
@@ -59,4 +59,10 @@ bool IsAQuad(Line lines[], Vector2 firstCorner, Vector2 thisCorner, Vector2 quad
  */
 bool IsSameQuad(Vector2* quadCorners, std::vector<Quad> QuadList, int quad);
 
+/**
+ * @brief
+ * @param corner1 
+ * @param corner2 
+ * @return 
+ */
 bool IsSameCorner(const Vector2& corner1, const Vector2& corner2);
