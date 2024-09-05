@@ -114,11 +114,11 @@ void AddCorner(Line intersections[], int newY, int newX)
 {
 	for (int i = 0; i < MAX_CORNERS; i++)
 	{
-		if (!intersections[i].isThereACorner)
+		if (!intersections[i].Done)
 		{
-			intersections[i].Intersect.x = newX;
-			intersections[i].Intersect.y = newY;
-			intersections[i].isThereACorner = true;
+			intersections[i].Corners[i].x = newX;
+			intersections[i].Corners[i].y = newY;
+			intersections[i].Done = true;
 			return;
 		}
 	}
