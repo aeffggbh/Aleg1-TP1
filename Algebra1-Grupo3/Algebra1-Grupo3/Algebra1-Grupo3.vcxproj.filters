@@ -21,12 +21,27 @@
     <ClCompile Include="Squares.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="isAQuad.cpp">
+    <ClCompile Include="Lines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Corners.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Squares.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Corners.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
