@@ -143,11 +143,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="isAQuad.cpp" />
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Corners.cpp" />
+    <ClCompile Include="Lines.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Squares.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="Corners.h" />
+    <ClInclude Include="Lines.h" />
     <ClInclude Include="Squares.h" />
   </ItemGroup>
   <ItemGroup>
