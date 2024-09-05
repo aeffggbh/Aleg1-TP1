@@ -1,5 +1,16 @@
 # Aleg1-TP1
-Hacer un programa que detecte cuadrilateros, y que muestre su area y perimetro.
+
+El programa entregar debe cumplir las siguientes consignas:
+
+El usuario debe poder clickear 8 veces en la pantalla, cada dos clicks se define un segmento.
+
+Tras generar 4 segmentos, verificar si esos segmentos conforman un cuadrilatero
+
+En caso de que lo formen, calcular e imprimir el area y perimetro de dicho cuadrilatero.
+
+Le entrega en la fecha del parcial debe de constar de un .rar/.zip con la solución y un .exe funcional O el link a un repositorio, de ser esta ultima opción la utilizada verificar que que el .gitignore no excluya nada importante.
+
+Sugerencia: Siempre antes de entregar, separen su .rar y descomprímanlo para verificar que funcione O descarguen su repo y verifiquen que funciona.
 
 ## Integrantes:
 1. Alex Gallardo/Stevendotcom = Nicolas Gallardo -> <nicolas.gallardo@estudiante.imagecampus.edu.ar>
