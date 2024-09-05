@@ -3,6 +3,10 @@
 
 using namespace std;
 
+void SearchCorner(Line line[], Line corners[]);
+void LineIntersecctions(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Line intersections[]);
+void AddCorner(Line intersections[], int newY, int newX);
+
 int main()
 {
 	const int screenWidth = 800;
@@ -15,6 +19,7 @@ int main()
 	Vector2 mousePos;
 
 	Line myLines[LINES_AMOUNT];
+	Line Intersect[MAX_CORNERS];
 
 	InitWindow(screenWidth, screenHeight, "Quad test");
 	SetTargetFPS(60);
@@ -24,7 +29,6 @@ int main()
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			mousePos = GetMouseCoord();
-
 
 			if (!myLines[currentLine].Done && currentLine < LINES_AMOUNT)
 			{
@@ -45,7 +49,10 @@ int main()
 			}
 		}
 
+
 		BeginDrawing();
+
+		SearchCorner(myLines, Intersect);
 
 		ClearBackground(BLACK);
 		DrawText("Clic on two positions!", 20, 20, 20, WHITE);
@@ -59,8 +66,61 @@ int main()
 		}
 		EndDrawing();
 	}
-	CloseWindow();
 
+	CloseWindow();
 	return 0;
 }
 
+void SearchCorner(Line line[], Line corners[])
+{
+	Line auxLine;
+
+	for (int i = 0; i < LINES_AMOUNT; i++)
+	{
+		auxLine = line[i];
+
+		for (int j = 0; j < LINES_AMOUNT; j++)
+		{
+			if (auxLine.Start.x != line[j].Start.x && auxLine.Start.y != line[j].Start.y)
+			{
+				LineIntersecctions(auxLine.Start.x, auxLine.Start.y, auxLine.Finish.x, auxLine.Finish.y, line[j].Start.x, line[j].Start.y, line[j].Finish.x, line[j].Finish.y, corners);
+			}
+		}
+	}
+}
+
+void LineIntersecctions(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Line intersections[])
+{
+	Line auxCorner;
+
+	// calculate the distance to intersection point
+	float uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+	float uB = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+
+	// if uA and uB are between 0-1, lines are colliding
+	if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1)
+	{
+		// optionally, draw a circle where the lines meet
+		float intersectionX = x1 + (uA * (x2 - x1));
+		float intersectionY = y1 + (uA * (y2 - y1));
+
+		AddCorner(intersections, intersectionY, intersectionX);
+
+		DrawCircle(intersectionX, intersectionY, 5, RED);
+	}
+}
+
+void AddCorner(Line intersections[], int newY, int newX)
+{
+	for (int i = 0; i < MAX_CORNERS; i++)
+	{
+		if (!intersections[i].isThereACorner)
+		{
+			intersections[i].Intersect.x = newX;
+			intersections[i].Intersect.y = newY;
+			intersections[i].isThereACorner = true;
+			return;
+		}
+	}
+
+}

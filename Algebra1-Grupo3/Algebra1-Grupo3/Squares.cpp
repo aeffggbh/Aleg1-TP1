@@ -21,3 +21,4 @@ bool IsAQuad(Line lines[LINES_AMOUNT])
 {
 	return false;
 }
+
