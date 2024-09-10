@@ -1,7 +1,6 @@
 #include "Application.h"
 
-int main()
+void main()
 {
 	MainLoop();
-	return 0;
 }

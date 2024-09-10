@@ -17,6 +17,7 @@ void MainLoop()
 
 	InitWindow(screenWidth, screenHeight, "Quad test");
 	SetTargetFPS(60);
+
 	while (!WindowShouldClose())
 	{
 		CheckLinesCreated(myLines, currentPosition, currentLine);
