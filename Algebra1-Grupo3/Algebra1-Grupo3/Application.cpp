@@ -24,7 +24,7 @@ void MainLoop()
 
 		BeginDrawing();
 
-		SearchCorner(myLines, Intersect);
+		SearchCorner(myLines, Intersect->Corners);
 
 		ClearBackground(BLACK);
 

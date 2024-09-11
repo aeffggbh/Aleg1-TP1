@@ -3,7 +3,7 @@
 #include <vector>
 #include "Lines.h"
 
-const int MAX_CORNERS = 6;
+
 
 struct Quad
 {
