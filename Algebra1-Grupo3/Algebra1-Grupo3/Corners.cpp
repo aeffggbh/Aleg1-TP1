@@ -39,25 +39,29 @@ void LineIntersections(float x1, float y1, float x2, float y2, float x3, float y
 	}
 }
 
-void AddCorner(Vector2 Corners[], int newY, int newX)
+void AddCorner(Line Line, int newY, int newX)
 {
-	bool cornerDone = false;
+	Vector2 newCorner = { newX, newY };
 
 	for (int i = 0; i < MAX_CORNERS; i++)
 	{
-		if (!cornerDone)
+		if (!IsSameCorner(Line.Corners[i], newCorner))
 		{
-			Corners[i].x = newX;
-			Corners[i].y = newY;
-			cornerDone = true;
+			Line.Corners[i] = newCorner;
 			return;
 		}
 	}
-
 }
 
 bool IsSameCorner(const Vector2& corner1, const Vector2& corner2)
 {
 	return corner1.x < FLT_EPSILON + corner2.x && corner1.x > corner2.x - FLT_EPSILON
 		&& corner1.y < FLT_EPSILON + corner2.y && corner1.y > corner2.y - FLT_EPSILON;
+}
+
+void DrawCorners(Line line[])
+{
+	for (int i = 0; i < LINES_AMOUNT; i++)
+		for (int j = 0; j < MAX_CORNERS; j++)
+			DrawCircle(line[i].Corners[j].x, line[i].Corners[j].y, 5, RED);
 }
