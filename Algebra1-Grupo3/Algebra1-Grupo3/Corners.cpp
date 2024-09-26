@@ -2,53 +2,58 @@
 
 void SearchCorner(Line lines[])
 {
-    Line auxLine;
-
-    for (int i = 0; i < LINES_AMOUNT; i++)
-    {
-        auxLine = lines[i];
-
-        for (int j = 0; j < LINES_AMOUNT; j++)
-        {
-            if (auxLine.Start.x != lines[j].Start.x && auxLine.Start.y != lines[j].Start.y)
-            {
-                LineIntersections(auxLine.Start.x, auxLine.Start.y, auxLine.Finish.x, auxLine.Finish.y,
-                                  lines[j].Start.x, lines[j].Start.y, lines[j].Finish.x, lines[j].Finish.y, lines[j]);
-            }
-        }
-    }
+	for (int i = 0; i < LINES_AMOUNT; i++)
+		for (int j = i + 1; j < LINES_AMOUNT; j++)
+			LineIntersections(lines[i], lines[j]);
 }
 
-void LineIntersections(const float x1, const float y1, const float x2, const float y2, const float x3, const float y3,
-                       const float x4, const float y4, Line& line)
+void LineIntersections(Line& line_A, Line& line_B)
 {
-    // calculate the distance to intersection point
-    float uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
-    float uB = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
+	// y = m x + B
 
-    // if uA and uB are between 0-1, lines are colliding
-    if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1)
-    {
-        // optionally, draw a circle where the lines meet
-        float intersectionX = x1 + (uA * (x2 - x1));
-        float intersectionY = y1 + (uA * (y2 - y1));
+	const float step = 0.0005f;
 
-        AddCorner(line, intersectionY, intersectionX);
+	const float m_A = FindM(line_A);
+	float b_A = FindB(line_A, m_A);
+	const float m_B = FindM(line_B);
+	float b_B = FindB(line_B, m_B);
 
-        /*
-        DrawCircle(intersectionX, intersectionY, 5, RED);*/
-    }
+	//traverses the line
+	for(float x = line_A.Start.x; x < line_A.Finish.x; x += step)
+	{
+		if((m_A * x + b_A - b_B) / m_B == line_B.Start.y)
+		{
+			AddCorner();
+			break;
+		}
+	}
+
+		
 }
 
 void AddCorner(Line& line, const int newY, const int newX)
 {
-    line.Corners[0].x = newX;
-    line.Corners[0].y = newY;
-    line.CornersAmount++;
+	line.Corners[0].x = newX;
+	line.Corners[0].y = newY;
+	line.CornersAmount++;
 }
+
+float FindM(const Line& line)
+{
+	//The length in y / x of a line
+	return (line.Finish.x - line.Start.x) / (line.Finish.y - line.Start.y);
+}
+
+float FindB(const Line& line, const float m)
+{
+	//The height of the intersections of the lines
+	return line.Start.y - m * line.Start.x;
+}
+
+
 
 bool IsSameCorner(const Vector2& corner1, const Vector2& corner2)
 {
-    return corner1.x < FLT_EPSILON + corner2.x && corner1.x > corner2.x - FLT_EPSILON
-        && corner1.y < FLT_EPSILON + corner2.y && corner1.y > corner2.y - FLT_EPSILON;
+	return corner1.x < FLT_EPSILON + corner2.x && corner1.x > corner2.x - FLT_EPSILON
+		&& corner1.y < FLT_EPSILON + corner2.y && corner1.y > corner2.y - FLT_EPSILON;
 }
