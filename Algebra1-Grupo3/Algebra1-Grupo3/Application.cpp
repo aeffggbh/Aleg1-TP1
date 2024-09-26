@@ -12,18 +12,17 @@ void MainLoop()
 	int currentLine = 0;
 	int currentPosition = START;
 	Line myLines[LINES_AMOUNT];
-	
-	Line Intersect[MAX_CORNERS];
 
 	InitWindow(screenWidth, screenHeight, "Quad test");
 	SetTargetFPS(60);
+
 	while (!WindowShouldClose())
 	{
 		CheckLinesCreated(myLines, currentPosition, currentLine);
 
 		BeginDrawing();
 
-		SearchCorner(myLines, Intersect);
+		SearchCorner(myLines);
 
 		ClearBackground(BLACK);
 

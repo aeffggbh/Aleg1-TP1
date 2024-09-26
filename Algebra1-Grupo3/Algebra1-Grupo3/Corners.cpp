@@ -1,6 +1,6 @@
 #include "Corners.h"
 
-void SearchCorner(Line line[], Line corners[])
+void SearchCorner(Line line[])
 {
 	Line auxLine;
 
@@ -12,13 +12,13 @@ void SearchCorner(Line line[], Line corners[])
 		{
 			if (auxLine.Start.x != line[j].Start.x && auxLine.Start.y != line[j].Start.y)
 			{
-				LineIntersections(auxLine.Start.x, auxLine.Start.y, auxLine.Finish.x, auxLine.Finish.y, line[j].Start.x, line[j].Start.y, line[j].Finish.x, line[j].Finish.y, corners);
+				LineIntersections(auxLine.Start.x, auxLine.Start.y, auxLine.Finish.x, auxLine.Finish.y, line[j].Start.x, line[j].Start.y, line[j].Finish.x, line[j].Finish.y, line->Corners);
 			}
 		}
 	}
 }
 
-void LineIntersections(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Line intersections[])
+void LineIntersections(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Vector2 Corners[])
 {
 	Line auxCorner;
 
@@ -33,21 +33,23 @@ void LineIntersections(float x1, float y1, float x2, float y2, float x3, float y
 		float intersectionX = x1 + (uA * (x2 - x1));
 		float intersectionY = y1 + (uA * (y2 - y1));
 
-		AddCorner(intersections, intersectionY, intersectionX);
+		AddCorner(Corners, intersectionY, intersectionX);
 
 		DrawCircle(intersectionX, intersectionY, 5, RED);
 	}
 }
 
-void AddCorner(Line intersections[], int newY, int newX)
+void AddCorner(Vector2 Corners[], int newY, int newX)
 {
+	bool cornerDone = false;
+
 	for (int i = 0; i < MAX_CORNERS; i++)
 	{
-		if (!intersections[i].Done)
+		if (!cornerDone)
 		{
-			intersections[i].Corners[i].x = newX;
-			intersections[i].Corners[i].y = newY;
-			intersections[i].Done = true;
+			Corners[i].x = newX;
+			Corners[i].y = newY;
+			cornerDone = true;
 			return;
 		}
 	}
