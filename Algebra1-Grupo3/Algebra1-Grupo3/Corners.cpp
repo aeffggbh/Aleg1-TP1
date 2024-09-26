@@ -1,6 +1,6 @@
 #include "Corners.h"
 
-void SearchCorner(Line line[], Vector2 Corners[])
+void SearchCorner(Line line[])
 {
 	Line auxLine;
 
@@ -12,7 +12,7 @@ void SearchCorner(Line line[], Vector2 Corners[])
 		{
 			if (auxLine.Start.x != line[j].Start.x && auxLine.Start.y != line[j].Start.y)
 			{
-				LineIntersections(auxLine.Start.x, auxLine.Start.y, auxLine.Finish.x, auxLine.Finish.y, line[j].Start.x, line[j].Start.y, line[j].Finish.x, line[j].Finish.y, Corners);
+				LineIntersections(auxLine.Start.x, auxLine.Start.y, auxLine.Finish.x, auxLine.Finish.y, line[j].Start.x, line[j].Start.y, line[j].Finish.x, line[j].Finish.y, line->Corners);
 			}
 		}
 	}
