@@ -3,6 +3,7 @@
 
 void SearchCorner(Line line[]);
 void LineIntersections(Line& line_A, Line& line_B);
-void AddCorner(Line& line, int newY, int newX);
+void AddCorner(Line& line, float newY, float newX);
 float FindM(const Line& line);
-float FindB(const Line& line, const float m);
+float FindB(const Line& line, float m);
+void DrawCorners(Line line[]);

@@ -41,6 +41,8 @@ void MainLoop()
 		DrawText("Clic on two positions!", 20, 20, 20, WHITE);
 
 		DrawLines(lines);
+
+		DrawCorners(lines);
 		
 		EndDrawing();
 	}
