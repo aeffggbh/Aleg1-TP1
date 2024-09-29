@@ -20,9 +20,9 @@ void MainLoop()
 	{
 		CheckLinesCreated(lines, currentPosition, currentLine);
 
-		BeginDrawing();
-
 		SearchCorner(lines, currentLine);
+
+		BeginDrawing();
 
 		ClearBackground(BLACK);
 

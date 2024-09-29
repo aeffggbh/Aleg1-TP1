@@ -68,6 +68,7 @@ bool IsAQuad(Line lines[], Vector2 firstCorner, Vector2 thisCorner, Vector2 quad
 			}
 		}
 	}
+	return false;
 }
 
 bool IsSameQuad(Vector2 quad1[], Quad& quad2)

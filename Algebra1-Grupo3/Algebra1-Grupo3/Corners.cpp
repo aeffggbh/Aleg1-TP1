@@ -20,9 +20,14 @@ void LineIntersections(Line& lineA, const Line& lineB)
     float yB;
 
     //traverses the line
-    for (float xA = lineA.Start.x; xA <= lineA.Finish.x; xA += step)
+    const float startA = lineA.Start.x < lineA.Finish.x ? lineA.Start.x : lineA.Finish.x;
+    const float finishA = lineA.Start.x > lineA.Finish.x ? lineA.Start.x : lineA.Finish.x;
+    const float startB = lineB.Start.x < lineB.Finish.x ? lineB.Start.x : lineB.Finish.x;
+    const float finishB = lineB.Start.x > lineB.Finish.x ? lineB.Start.x : lineB.Finish.x;
+
+    for (float xA = startA ; xA <= finishA; xA += step)
     {
-        for (float xB = lineB.Start.x; xB <= lineB.Finish.x; xB += step)
+        for (float xB = startB; xB <= finishB; xB += step)
         {
             yA = mA * xA + bA;
             yB = xB * mB + bB;
@@ -49,6 +54,7 @@ void AddCorner(Line& line, const float newX, const float newY)
         if (!IsSameCorner(corner, newCorner))
         {
             line.Corners.push_back(newCorner);
+            return;
         }
 }
 
