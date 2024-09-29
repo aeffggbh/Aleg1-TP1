@@ -2,5 +2,9 @@
 #include "Squares.h"
 
 void SearchCorner(Line line[]);
-void LineIntersections(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Vector2 Corners[]);
-void AddCorner(Vector2 Corners[], int newY, int newX);
+void LineIntersections(Line& line_A, Line& line_B);
+void AddCorner(Line& line, float newY, float newX);
+float FindM(const Line& line);
+float FindB(const Line& line, float m);
+void DrawCorners(Line line[]);
+
