@@ -11,36 +11,24 @@ void MainLoop()
 
 	int currentLine = 0;
 	int currentPosition = START;
-	Line lines[LINES_AMOUNT];
-	std::vector<Quad> quadList;
-	Vector2 QuadVectors[4];
+	Line myLines[LINES_AMOUNT];
 
 	InitWindow(screenWidth, screenHeight, "Quad test");
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
 	{
-		CheckLinesCreated(lines, currentPosition, currentLine);
-
-		SearchCorner(lines);
+		CheckLinesCreated(myLines, currentPosition, currentLine);
 
 		BeginDrawing();
 
-		for(int i = 0; i < currentLine; i++)
-		{
-			for (int j = 0; j < lines[i].CornersAmount; j++)
-			{
-				IsAQuad(lines, lines[i].Corners[j], lines[i].Corners[j], QuadVectors, 0, quadList);
-			}
-		}
-
-		cout << quadList.size() << endl;
+		SearchCorner(myLines);
 
 		ClearBackground(BLACK);
 
 		DrawText("Clic on two positions!", 20, 20, 20, WHITE);
 
-		DrawLines(lines);
+		DrawLines(myLines);
 		
 		EndDrawing();
 	}
