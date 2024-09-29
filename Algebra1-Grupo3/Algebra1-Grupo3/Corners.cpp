@@ -28,14 +28,14 @@ void LineIntersections(Line& lineA, const Line& lineB)
             yB = xB * mB + bB;
             if (IsSameCorner({xA, yA}, {xB, yB}))
             {
-                AddCorner(lineA, yA, xA);
+                AddCorner(lineA, xA, yA);
             }
         }
     }
 }
 
 
-void AddCorner(Line& line, const float newY, const float newX)
+void AddCorner(Line& line, const float newX, const float newY)
 {
     Vector2 newCorner = {newX, newY};
 
@@ -49,7 +49,6 @@ void AddCorner(Line& line, const float newY, const float newX)
         if (!IsSameCorner(corner, newCorner))
         {
             line.Corners.push_back(newCorner);
-            return;
         }
 }
 
