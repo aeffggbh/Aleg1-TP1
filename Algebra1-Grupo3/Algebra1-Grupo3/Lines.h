@@ -27,7 +27,7 @@ Vector2 GetMouseCoord();
  * @param line
  * @param lines
  */
-void DrawLine(const Line& line, Line lines[LINES_AMOUNT], int currentPos);
+void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos);
 
 void CheckLinesCreated(Line myLines[], int& currentPosition, int& currentLine);
 

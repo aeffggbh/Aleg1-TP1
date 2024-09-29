@@ -1,15 +1,13 @@
 #include "Corners.h"
 
-void SearchCorner(Line lines[])
+void SearchCorner(Line line[])
 {
     for (int i = 0; i < LINES_AMOUNT; i++)
         for (int j = i + 1; j < LINES_AMOUNT; j++)
-
-                LineIntersections(lines[i], lines[j]);
-
+               LineIntersections(lines[i], lines[j]);
 }
 
-void LineIntersections(Line& line_A, Line& line_B)
+void LineIntersections(float x1, float y1, float x2, float y2, float x3, float y3, float x4, float y4, Vector2 Corners[])
 {
     // y = m x + B
 
@@ -58,7 +56,6 @@ float FindB(const Line& line, const float m)
     //The height of the intersections of the lines
     return line.Start.y - m * line.Start.x;
 }
-
 
 bool IsSameCorner(const Vector2& corner1, const Vector2& corner2)
 {

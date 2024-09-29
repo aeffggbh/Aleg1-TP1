@@ -7,3 +7,4 @@ void AddCorner(Line& line, float newY, float newX);
 float FindM(const Line& line);
 float FindB(const Line& line, float m);
 void DrawCorners(Line line[]);
+
