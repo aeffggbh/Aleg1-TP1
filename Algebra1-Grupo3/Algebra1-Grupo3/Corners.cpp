@@ -1,31 +1,32 @@
 #include "Corners.h"
 
-void SearchCorner(Line line[])
+void SearchCorner(Line line[], const int linesCreated)
 {
-    for (int i = 0; i < LINES_AMOUNT; i++)
-        for (int j = i + 1; j < LINES_AMOUNT; j++)
+    for (int i = 0; i < linesCreated; i++)
+        for (int j = i + 1; j < linesCreated; j++)
                LineIntersections(line[i], line[j]);
 }
 
-void LineIntersections(Line& line_A, Line& line_B)
+void LineIntersections(Line& lineA, const Line& lineB)
 {
     // y = m x + B
 
-    const float step = 0.05f;
+    const float step = 0.01f;
 
-    const float m_A = FindM(line_A);
-    float b_A = FindB(line_A, m_A);
-    const float m_B = FindM(line_B);
-    float b_B = FindB(line_B, m_B);
+    const float mA = FindM(lineA);
+    const float bA = FindB(lineA, mA);
+    const float mB = FindM(lineB);
+    const float bB = FindB(lineB, mB);
 
     //traverses the line
-    for (float x = line_A.Start.x; x < line_A.Finish.x; x += step)
+    for (float xA = lineA.Start.x; xA <= lineA.Finish.x; xA += step)
     {
-        for (float y = line_B.Start.y; y < line_B.Finish.y; y += step)
+        for (float xB = lineB.Start.x; xB <= lineB.Finish.x; xB += step)
         {
-            if ((m_A * x + b_A - b_B) / m_B == y)
+            if ((mA * xA + bA - bB) / mB == xB)
             {
-                AddCorner(line_A, x, y);
+                const float yA = mA * xA + bA;
+                AddCorner(lineA, yA, xA);
             }
         }
     }

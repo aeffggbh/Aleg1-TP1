@@ -22,7 +22,7 @@ void MainLoop()
 
 		BeginDrawing();
 
-		SearchCorner(lines);
+		SearchCorner(lines, currentLine);
 
 		ClearBackground(BLACK);
 

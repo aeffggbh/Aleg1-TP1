@@ -54,7 +54,7 @@ bool IsAQuad(Line lines[], Vector2 firstCorner, Vector2 thisCorner, Vector2 quad
 	{
 		for (int corner = 0; corner < lines[line].CornersAmount; corner++)
 		{
-			if (IsSameCorner(lines[line].Corners[corner], thisCorner))
+			if (!IsSameCorner(lines[line].Corners[corner], thisCorner))
 			{
 				segments += 1;
 				quadCorners[segments] = thisCorner;
