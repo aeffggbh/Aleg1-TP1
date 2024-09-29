@@ -10,7 +10,7 @@ Vector2 GetMouseCoord()
 	return vector;
 }
 
-void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos)
+void DrawLine(const Line& line, Line lines[LINES_AMOUNT], int currentPos)
 {
 	DrawLine(line.Start.x, line.Start.y, line.Finish.x, line.Finish.y, RED);
 
