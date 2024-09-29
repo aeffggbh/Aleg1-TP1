@@ -11,18 +11,18 @@ void MainLoop()
 
 	int currentLine = 0;
 	int currentPosition = START;
-	Line myLines[LINES_AMOUNT];
+	Line lines[LINES_AMOUNT];
 
 	InitWindow(screenWidth, screenHeight, "Quad test");
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
 	{
-		CheckLinesCreated(myLines, currentPosition, currentLine);
+		CheckLinesCreated(lines, currentPosition, currentLine);
 
 		BeginDrawing();
 
-		SearchCorner(myLines);
+		SearchCorner(lines);
 
 		ClearBackground(BLACK);
 
