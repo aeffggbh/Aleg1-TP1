@@ -52,15 +52,15 @@ bool IsAQuad(Line lines[], Vector2 firstCorner, Vector2 thisCorner, Vector2 quad
 	// it iterates over all lines that have this corner in them
 	for (int line = 0; line < LINES_AMOUNT; line++)
 	{
-		for (int corner = 0; corner < lines[line].CornersAmount; corner++)
+		for (auto corner : lines[line].Corners)
 		{
-			if (!IsSameCorner(lines[line].Corners[corner], thisCorner))
+			if (!IsSameCorner(corner, thisCorner))
 			{
 				segments += 1;
 				quadCorners[segments] = thisCorner;
 
 				// iterate with next corner
-				for (int nextCorner = 0; nextCorner < lines[line].CornersAmount; nextCorner++)
+				for (int nextCorner = 0; nextCorner < lines[line].Corners.size(); nextCorner++)
 				{
 					IsAQuad(lines, firstCorner, lines[line].Corners[nextCorner], quadCorners, segments, quadList);
 				}

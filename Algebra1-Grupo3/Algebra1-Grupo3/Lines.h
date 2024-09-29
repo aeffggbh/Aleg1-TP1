@@ -1,14 +1,14 @@
 #pragma once
 #include <raylib.h>
+#include <vector>
 
 const int MAX_CORNERS = 6;
 
 struct Line
 {
-	Vector2 Start;
-	Vector2 Finish;
-	Vector2 Corners[MAX_CORNERS];
-	int CornersAmount;
+	Vector2 Start = { 0, 0 };
+	Vector2 Finish = { 0, 0 };
+	std::vector<Vector2> Corners;
 	bool Done = false;
 };
 
