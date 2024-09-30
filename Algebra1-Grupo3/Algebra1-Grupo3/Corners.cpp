@@ -1,6 +1,5 @@
 #include "Corners.h"
 
-
 void SearchCorner(Line line[], const int linesCreated)
 {
     for (int i = 0; i < linesCreated; i++)
@@ -25,7 +24,7 @@ void LineIntersections(Line& lineA, const Line& lineB)
     const float startB = lineB.Start.x < lineB.Finish.x ? lineB.Start.x : lineB.Finish.x;
     const float finishB = lineB.Start.x > lineB.Finish.x ? lineB.Start.x : lineB.Finish.x;
 
-    for (float xA = startA ; xA <= finishA; xA += step)
+    for (float xA = startA; xA <= finishA; xA += step)
     {
         for (float xB = startB; xB <= finishB; xB += step)
         {
@@ -44,14 +43,14 @@ void AddCorner(Line& line, const float newX, const float newY)
 {
     Vector2 newCorner = {newX, newY};
 
-    if(line.Corners.empty())
+    if (line.Corners.empty())
     {
         line.Corners.push_back(newCorner);
         return;
     }
 
     for (auto corner : line.Corners)
-        if (!IsSameCorner(corner, newCorner))
+        if (!IsSameCorner(corner, newCorner, 3))
         {
             line.Corners.push_back(newCorner);
             return;
@@ -70,11 +69,19 @@ float FindB(const Line& line, const float m)
     return line.Start.y - m * line.Start.x;
 }
 
-bool IsSameCorner(const Vector2& corner1, const Vector2& corner2)
+bool IsSameCorner(const Vector2& corner1, const Vector2& corner2, const float margin)
 {
-    constexpr float margin = 0.5f;
-    return corner1.x < margin + corner2.x && corner1.x > corner2.x - margin
-        && corner1.y < margin + corner2.y && corner1.y > corner2.y - margin;
+    bool cond1 = false;
+    bool cond2 = false;
+    if (corner1.x < margin + corner2.x && corner1.x > corner2.x - margin)
+    {
+        cond1 = true;
+    }
+    if (corner1.y < margin + corner2.y && corner1.y > corner2.y - margin)
+    {
+        cond2 = true;
+    }
+    return cond1 && cond2;
 }
 
 void DrawCorners(Line line[])
