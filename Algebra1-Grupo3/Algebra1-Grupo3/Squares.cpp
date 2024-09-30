@@ -1,5 +1,8 @@
 #include "Squares.h"
+#include <cmath>
+
 bool IsSameCornerForQuad(const Vector2& corner1, const Vector2& corner2);
+
 
 bool IsAQuad(Line lines[], Vector2 thisCorner, std::vector<Quad>& quadList, Vector2 quadCorners[4],
              Vector2 firstCorner, int segments)
@@ -77,7 +80,7 @@ bool IsAQuad(Line lines[], Vector2 thisCorner, std::vector<Quad>& quadList, Vect
 
 bool IsSameQuad(Vector2 quad1[], Quad& quad2)
 {
-    for (int i = 0; i < 4; i++)
+   for (int i = 0; i < 4; i++)
     {
         if(IsSameCornerForQuad(quad2.C1, quad1[0 + i % 4])
             && IsSameCornerForQuad(quad2.C2, quad1[1 + i % 4])
@@ -88,6 +91,28 @@ bool IsSameQuad(Vector2 quad1[], Quad& quad2)
         }
     }
     return false;
+}
+
+float Distance(Vector2 a, Vector2 b)
+{
+	return sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
+}
+
+float CalculatePerimeter(Quad quad)
+{
+	float d1 = Distance(quad.C1, quad.C2); // Distancia entre c1 y c2
+	float d2 = Distance(quad.C2, quad.C3); // Distancia entre c2 y c3
+	float d3 = Distance(quad.C3, quad.C4); // Distancia entre c3 y c4
+	float d4 = Distance(quad.C4, quad.C1); // Distancia entre c4 y c1
+
+	return d1 + d2 + d3 + d4;
+}
+
+float CalculateQuadArea(Quad quad)
+{
+	return 0.5f * abs(quad.C1.x * quad.C2.y + quad.C2.x * quad.C3.y + quad.C3.x * quad.C4.y + quad.C4.x * quad.C1.y -
+					(quad.C2.x * quad.C1.y + quad.C3.x * quad.C2.y + quad.C4.x * quad.C3.y + quad.C1.x * quad.C4.y));
+   
 }
 
 bool IsSameCornerForQuad(const Vector2& corner1, const Vector2& corner2)
