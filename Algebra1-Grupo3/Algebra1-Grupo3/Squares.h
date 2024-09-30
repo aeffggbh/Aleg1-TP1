@@ -23,9 +23,8 @@ struct Quad
  * @param quadList vector with quads
  * @return whether a quad was found or not
  */
-bool IsAQuad(Line lines[], Vector2 firstCorner, Vector2 thisCorner, Vector2 quadCorners[4], int segments,
-             std::vector<Quad>
-             quadList);
+bool IsAQuad(Line lines[], Vector2 thisCorner, std::vector<Quad>& quadList, Vector2 quadCorners[4],
+             Vector2 firstCorner = {0, 0}, int segments = 0);
 
 /**
  * @brief checks whether 2 quads are the same quad
