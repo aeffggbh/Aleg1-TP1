@@ -1,5 +1,4 @@
 #include "Corners.h"
-bool IsNearCorner(const Vector2& corner1, const Vector2& corner2);
 
 void SearchCorner(Line line[], const int linesCreated)
 {
@@ -25,23 +24,13 @@ void LineIntersections(Line& lineA, const Line& lineB)
     const float startB = lineB.Start.x < lineB.Finish.x ? lineB.Start.x : lineB.Finish.x;
     const float finishB = lineB.Start.x > lineB.Finish.x ? lineB.Start.x : lineB.Finish.x;
 
-    for (float xA = startA ; xA <= finishA; xA += step)
+    for (float xA = startA; xA <= finishA; xA += step)
     {
         for (float xB = startB; xB <= finishB; xB += step)
         {
-            bool isAlone = true;
             yA = mA * xA + bA;
             yB = xB * mB + bB;
-            for(auto corner : lineA.Corners)
-            {
-                if(IsNearCorner({xA, yA}, corner))
-                {
-                    isAlone = false;
-                    break;
-                }
-
-            }
-            if (IsSameCorner({xA, yA}, {xB, yB}) && isAlone)
+            if (IsSameCorner({xA, yA}, {xB, yB}))
             {
                 AddCorner(lineA, xA, yA);
             }
@@ -61,7 +50,7 @@ void AddCorner(Line& line, const float newX, const float newY)
     }
 
     for (auto corner : line.Corners)
-        if (!IsSameCorner(corner, newCorner))
+        if (!IsSameCorner(corner, newCorner, 3))
         {
             line.Corners.push_back(newCorner);
             return;
@@ -80,11 +69,19 @@ float FindB(const Line& line, const float m)
     return line.Start.y - m * line.Start.x;
 }
 
-bool IsSameCorner(const Vector2& corner1, const Vector2& corner2)
+bool IsSameCorner(const Vector2& corner1, const Vector2& corner2, const float margin)
 {
-    constexpr float margin = 1;
-    return corner1.x < margin + corner2.x && corner1.x > corner2.x - margin
-        && corner1.y < margin + corner2.y && corner1.y > corner2.y - margin;
+    bool cond1 = false;
+    bool cond2 = false;
+    if (corner1.x < margin + corner2.x && corner1.x > corner2.x - margin)
+    {
+        cond1 = true;
+    }
+    if (corner1.y < margin + corner2.y && corner1.y > corner2.y - margin)
+    {
+        cond2 = true;
+    }
+    return cond1 && cond2;
 }
 
 void DrawCorners(Line line[])
@@ -92,8 +89,4 @@ void DrawCorners(Line line[])
     for (int i = 0; i < LINES_AMOUNT; i++)
         for (auto corner : line[i].Corners)
             DrawCircle(corner.x, corner.y, 5, RED);
-}
-bool IsNearCorner(const Vector2& corner1, const Vector2& corner2)
-{
-    return 1 > (corner2.x - corner1.x) * (corner2.x - corner1.x) + (corner2.y - corner1.y) * (corner2.y - corner1.y);
 }

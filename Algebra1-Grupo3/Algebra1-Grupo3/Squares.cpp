@@ -92,7 +92,7 @@ bool IsSameQuad(Vector2 quad1[], Quad& quad2)
 
 bool IsSameCornerForQuad(const Vector2& corner1, const Vector2& corner2)
 {
-    constexpr float margin = 5;
+    constexpr float margin = 2;
     return corner1.x < margin + corner2.x && corner1.x > corner2.x - margin
         && corner1.y < margin + corner2.y && corner1.y > corner2.y - margin;
 }
