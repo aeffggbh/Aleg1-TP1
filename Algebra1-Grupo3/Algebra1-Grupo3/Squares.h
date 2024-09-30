@@ -42,3 +42,9 @@ bool IsSameQuad(Vector2 quad1[], Quad& quad2);
  * @return whether is same cornet or not
  */
 bool IsSameCorner(const Vector2& corner1, const Vector2& corner2);
+
+float Distance(Vector2 a, Vector2 b);
+
+float CalculatePerimeter(Quad quad);
+
+float CalculateQuadArea(Quad quad);
