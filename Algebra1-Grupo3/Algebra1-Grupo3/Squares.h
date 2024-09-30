@@ -34,12 +34,6 @@ bool IsAQuad(Line lines[], Vector2 thisCorner, std::vector<Quad>& quadList, Vect
  */
 bool IsSameQuad(Vector2 quad1[], Quad& quad2);
 
-/**
- * @brief check whether two corners are the same or nor
- * @param corner1 first corner to compare
- * @param corner2 second corner to compare
- * @return whether is same cornet or not
- */
 
 float Distance(Vector2 a, Vector2 b);
 
@@ -47,4 +41,10 @@ float CalculatePerimeter(Quad quad);
 
 float CalculateQuadArea(Quad quad);
 
+/**
+ * @brief check whether two corners are the same or nor
+ * @param corner1 first corner to compare
+ * @param corner2 second corner to compare
+ * @return whether is same cornet or not
+ */
 bool IsSameCorner(const Vector2& corner1, const Vector2& corner2, float margin = 1);

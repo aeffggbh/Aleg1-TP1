@@ -39,6 +39,11 @@ void MainLoop()
 			quadLooked = true;
 		}
 		std::cout << quadList.size() << std::endl;
+		for(auto quad : quadList)
+		{
+			std::cout << CalculatePerimeter(quad) << std::endl;
+			std::cout << CalculateQuadArea(quad) << std::endl;
+		}
 		BeginDrawing();
 
 		ClearBackground(BLACK);
