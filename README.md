@@ -13,9 +13,9 @@ Le entrega en la fecha del parcial debe de constar de un .rar/.zip con la soluci
 Sugerencia: Siempre antes de entregar, separen su .rar y descomprímanlo para verificar que funcione O descarguen su repo y verifiquen que funciona.
 
 ## Integrantes:
-1. Alex Gallardo/Stevendotcom = Nicolas Gallardo -> <nicolas.gallardo@estudiante.imagecampus.edu.ar> (YO)
+1. Alex Gallardo/Stevendotcom = Nicolas Gallardo -> <nicolas.gallardo@estudiante.imagecampus.edu.ar> 
 2. Francisco/4FranJonas2 = Francisco Jonas -> <francisco.jonas@estudiante.imagecampus.edu.ar>
-1. sofi/aeffggbh = Sofia Alvarez -> <genuinedistinctclearcapital@gmail.com>
+1. sofi/aeffggbh = Sofia Alvarez -> <genuinedistinctclearcapital@gmail.com> (DUEÑA)
 3. Tomas Luchelli/MacGiv = Tomas Luchelli -> <tomas.luchelli@estudiante.imagecampus.edu.ar>
 
 ## Trello
