@@ -24,10 +24,13 @@
     <ClCompile Include="Lines.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Corners.cpp">
+    <ClCompile Include="Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Application.cpp">
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersections.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +41,13 @@
     <ClInclude Include="Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Corners.h">
+    <ClInclude Include="Lines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lines.h">
+    <ClInclude Include="Geometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersections.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
