@@ -75,27 +75,28 @@ namespace Calculations
 		double magnitudeB = GetMagnitude(b);
 
 		//get the cosine of the angle
-		double cosTheta = dotProduct / (magnitudeA * magnitudeB); 
+		//dotProduct = (magnitudeA * magnitudeB) * cosTheta;
+		double cosTheta = dotProduct / (magnitudeA * magnitudeB);
 
-		//normalize the conise
-		if (cosTheta > 1.0) 
+		//cosTheta will always be a number between -1 and 1, but I do this only to prevent wrong calculations
+		if (cosTheta > 1.0)
 			cosTheta = 1.0;
-		if (cosTheta < -1.0) 
+		if (cosTheta < -1.0)
 			cosTheta = -1.0;
 
 		//calcula el menor angulo entre los vectores (entre 0 y PI o 0 y 180 cuando se pasa a grados)
 		double radiansAngle = acos(cosTheta);
-		double degreesAngle = radiansAngle * (180.0 / PI); 
+		double degreesAngle = radiansAngle * (180.0 / PI);
 
 		/*
 			indica si el vector b está a la izquierda o a la derecha de a en el plano 2D.
-			Si crossProduct > 0, b está a la izquierda de a 
-			Si crossProduct < 0, b está a la derecha de a 
+			Si crossProduct > 0, b está a la izquierda de a
+			Si crossProduct < 0, b está a la derecha de a
 			Si crossProduct == 0, los vectores son colineales.
 		*/
 		double crossProduct = GetCrossProduct(a, b);
 
-		//si crossproduct < 0 esta a la derecha de a, lo que quiere decir que el angulo es mayor a 360 grados (Concavo)
+		//si crossproduct < 0 esta a la derecha de a, lo que quiere decir que el angulo es mayor a 180 grados (Concavo)
 		if (crossProduct < 0)
 		{
 			degreesAngle = 360.0 - degreesAngle;
@@ -179,9 +180,8 @@ namespace Calculations
 	/// <returns></returns>
 	float CalculateQuadArea(Quad quad, std::vector<Intersection> allIntersections)
 	{
-
-		return GetArea(allIntersections[quad.verticesIndex[0]].point, allIntersections[quad.verticesIndex[1]].point, 
-					   allIntersections[quad.verticesIndex[2]].point, allIntersections[quad.verticesIndex[3]].point);
+		return GetArea(allIntersections[quad.verticesIndex[0]].point, allIntersections[quad.verticesIndex[1]].point,
+			allIntersections[quad.verticesIndex[2]].point, allIntersections[quad.verticesIndex[3]].point);
 	}
 
 	void CalculateQuadAngles(Vector2 vertices[], float angles[], int anglesAmount)
@@ -189,17 +189,17 @@ namespace Calculations
 		for (int i = 0; i < anglesAmount; i++)
 		{
 			//crea un vector entre un vertice y otro
+			//cuando i + 1 == 4 entonces vuelve a la posicion 0
 			Vector2 v1 = { vertices[i].x - vertices[(i + 1) % anglesAmount].x,
 							vertices[i].y - vertices[(i + 1) % anglesAmount].y };
 
-			Vector2 v2 = { vertices[(i + 2) % anglesAmount].x - vertices[(i + 1) % anglesAmount].x, 
+			Vector2 v2 = { vertices[(i + 2) % anglesAmount].x - vertices[(i + 1) % anglesAmount].x,
 							vertices[(i + 2) % anglesAmount].y - vertices[(i + 1) % anglesAmount].y };
 
 			//calcula el angulo entre ellos
 			float angle = GetAngle(v1, v2);
 			//guarda ese angulo en el array de angulos
 			angles[i] = angle;
-			//suma ese angulo
 		}
 	}
 
