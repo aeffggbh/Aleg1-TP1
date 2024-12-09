@@ -1,5 +1,6 @@
 #include "Lines.h"
 
+//devuelve las coordenadas del mouse
 Vector2 GetMouseCoord()
 {
 	Vector2 vector;
@@ -10,14 +11,14 @@ Vector2 GetMouseCoord()
 	return vector;
 }
 
-void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos)
+//dibuja la linea, con un paso innecesario xd
+void DrawLine(Segment line)
 {
-	DrawLine(line.Start.x, line.Start.y, line.Finish.x, line.Finish.y, RED);
+	DrawLine(line.start.x, line.start.y, line.finish.x, line.finish.y, RED);
 
-	lines[currentPos] = line;
 }
 
-void CheckLinesCreated(Line myLines[], int& currentPosition, int& currentLine)
+void CheckLinesCreated(Segment myLines[], int& currentPosition, int& currentLine)
 {
 	Vector2 mousePos;
 
@@ -25,33 +26,39 @@ void CheckLinesCreated(Line myLines[], int& currentPosition, int& currentLine)
 	{
 		mousePos = GetMouseCoord();
 
-		if (!myLines[currentLine].Done && currentLine < LINES_AMOUNT)
+		if (!myLines[currentLine].done && currentLine < LINES_AMOUNT)
 		{
+			//las lineas empiezan teniendo una posicion inicial, por lo que primero entran aca
 			if (currentPosition == START)
 			{
-				myLines[currentLine].Start.x = mousePos.x;
-				myLines[currentLine].Start.y = mousePos.y;
+				myLines[currentLine].start.x = mousePos.x;
+				myLines[currentLine].start.y = mousePos.y;
+				//ya se empezo a crear esta linea, por lo que lo siguiente seria terminarla
 				currentPosition = FINISH;
 			}
 			else
 			{
-				myLines[currentLine].Finish.x = mousePos.x;
-				myLines[currentLine].Finish.y = mousePos.y;
+				myLines[currentLine].finish.x = mousePos.x;
+				myLines[currentLine].finish.y = mousePos.y;
+				//ya se termino esta linea, por lo que la siguiente linea se creará desde la posicion inicial
 				currentPosition = START;
-				myLines[currentLine].Done = true;
+				//la linea en la que estoy ya está terminada
+				myLines[currentLine].done = true;
+				//itero a la siguiente linea
 				currentLine++;
 			}
 		}
 	}
 }
 
-void DrawLines(Line myLines[])
+//se dibujan todas las lineas
+void DrawLines(Segment myLines[])
 {
 	for (int i = 0; i < LINES_AMOUNT; i++)
 	{
-		if (myLines[i].Done)
+		if (myLines[i].done)
 		{
-			DrawLine(myLines[i], myLines, i);
+			DrawLine(myLines[i]);
 		}
 	}
 }

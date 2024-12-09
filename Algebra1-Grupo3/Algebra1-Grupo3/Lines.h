@@ -2,14 +2,14 @@
 #include <raylib.h>
 #include <vector>
 
-const int MAX_CORNERS = 6;
-
-struct Line
+struct Segment
 {
-	Vector2 Start = { 0, 0 };
-	Vector2 Finish = { 0, 0 };
-	std::vector<Vector2> Corners;
-	bool Done = false;
+	Vector2 start = { 0, 0 };
+	Vector2 finish = { 0, 0 };
+	std::vector<Vector2> intersections;
+	std::vector<int> intersectIndex;
+	bool done = false;
+	int id;
 };
 
 const int START = 1;
@@ -27,8 +27,14 @@ Vector2 GetMouseCoord();
  * @param line
  * @param lines
  */
-void DrawLine(Line line, Line lines[LINES_AMOUNT], int currentPos);
+void DrawLine(Segment line);
 
-void CheckLinesCreated(Line myLines[], int& currentPosition, int& currentLine);
+/// <summary>
+/// 
+/// </summary>
+/// <param name="myLines"> array of lineas </param>
+/// <param name="currentPosition"> position of the line being created (START or FINISH) </param>
+/// <param name="currentLine"> current position of the line being created</param>
+void CheckLinesCreated(Segment myLines[], int& currentPosition, int& currentLine);
 
-void DrawLines(Line myLines[]);
+void DrawLines(Segment myLines[]);

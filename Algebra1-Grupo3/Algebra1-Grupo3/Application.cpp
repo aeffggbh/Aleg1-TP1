@@ -1,49 +1,83 @@
 #include "Application.h"
 #include <iostream>
-#include "Corners.h"
+#include "Squares.h"
+#include "Geometry.h"
 
 using namespace std;
+
+bool quadDone;
 
 void MainLoop()
 {
 	const int screenWidth = 800;
 	const int screenHeight = 600;
 
-	int currentLine = 0;
+	int currentLine = 0; //sirve como iterador para las lineas
 	int currentPosition = START;
-	Line lines[LINES_AMOUNT];
-	std::vector<Quad> quadList;
-	Vector2 quadCorners[4];
+	Segment lines[LINES_AMOUNT];	//las lineas que tiene cada cuadrado
+	std::vector<Quad> quadVector; //guarda los cuadris que se van haciendo
 	bool quadLooked = false;
+	bool reset = false;
+
+	int intersectionsTotal = 0;
+
+	std::vector<Intersection> allIntersections;
+	
 
 	InitWindow(screenWidth, screenHeight, "Quad test");
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
 	{
-		if(currentLine < LINES_AMOUNT)
+		if (reset)
+		{
+			quadVector.clear();
+			allIntersections.clear();
+			intersectionsTotal = 0;
+			quadLooked = false;
+			currentPosition = START;
+			currentLine = 0;
+
+			for (int i = 0; i < LINES_AMOUNT; i++)
+			{
+				lines[i].done = false;
+				lines[i].intersectIndex.clear();
+				lines[i].intersections.clear();
+			}
+
+			reset = false;
+		}
+
+		//si aún no hay un cuadrilatero, se chequean las lineas que se van creando
+		if (currentLine < LINES_AMOUNT)
 		{
 			CheckLinesCreated(lines, currentPosition, currentLine);
 
-			SearchCorner(lines, currentLine);
+			SearchIntersections(lines, currentLine, intersectionsTotal, allIntersections);
 		}
-		else if(!quadLooked)
+		//cuando se terminan de crear las lineas, empieza a buscar los cuadrilateros.
+		else if (!quadLooked)
 		{
-			for(int i = 0; i < LINES_AMOUNT; i++)
-			{
-				for (auto corner : lines[i].Corners)
-				{
-					IsAQuad(lines, corner, quadList, quadCorners);
-				}
-			}
+			CheckQuads(lines, quadVector, intersectionsTotal, allIntersections);
 			quadLooked = true;
 		}
-		std::cout << quadList.size() << std::endl;
-		for(auto quad : quadList)
+		if (quadLooked)
 		{
-			std::cout << CalculatePerimeter(quad) << std::endl;
-			std::cout << CalculateQuadArea(quad) << std::endl;
+			std::cout << "quads amount:" << quadVector.size() << std::endl;
+			for (int i = 0; i < quadVector.size(); i++)
+			{
+				std::cout << "Quad ID: " << i << std::endl;
+				std::cout << "perimeter: " << GetPerimeter(quadVector[i], allIntersections) << std::endl;
+				std::cout << "area: " << GetArea(quadVector[i], allIntersections) << std::endl;
+			}
+
+			if (IsKeyReleased(KEY_SPACE))
+			{
+				reset = true;
+			}
 		}
+
+		
 		BeginDrawing();
 
 		ClearBackground(BLACK);
@@ -52,8 +86,8 @@ void MainLoop()
 
 		DrawLines(lines);
 
-		DrawCorners(lines);
-		
+		DrawVertices(lines);
+
 		EndDrawing();
 	}
 
