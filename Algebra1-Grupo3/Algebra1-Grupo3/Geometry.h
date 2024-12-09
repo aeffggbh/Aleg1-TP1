@@ -9,8 +9,6 @@ namespace Calculations
 
 	double GetAreaOfATriangle(double a, double b, double c);
 
-	bool ArePointsCollinear(Vector2 a, Vector2 b, Vector2 c);
-
 	double GetDotProduct(Vector2 a, Vector2 b);
 
 	double GetMagnitude(Vector2 v);

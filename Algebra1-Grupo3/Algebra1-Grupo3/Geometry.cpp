@@ -21,25 +21,6 @@ namespace Calculations
 	}
 
 	/// <summary>
-	/// Checks if three points are in the same line
-	/// If I try to make a triangle with these three points, its area should be bigger than 0, otherwise, they're in the same line.
-	/// </summary>
-	/// <param name="a"></param>
-	/// <param name="b"></param>
-	/// <param name="c"></param>
-	/// <returns></returns>
-	bool ArePointsCollinear(Vector2 a, Vector2 b, Vector2 c)
-	{
-		double AB = Distance(a, b);
-		double BC = Distance(b, c);
-		double CA = Distance(c, a);
-
-		double area = GetAreaOfATriangle(AB, BC, CA);
-
-		return area < epsilon;
-	}
-
-	/// <summary>
 	/// Si los vectores apuntan en la misma dirección → cos(θ) = 1
 	/// Si son perpendiculares → cos(θ) = 0
 	///	Si apuntan en direcciones opuestas → cos(θ) = -1
