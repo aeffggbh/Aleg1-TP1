@@ -1,5 +1,7 @@
 ﻿#include "Geometry.h"
 
+//4
+
 namespace Calculations
 {
 	/// <summary>

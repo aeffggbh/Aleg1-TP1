@@ -3,6 +3,8 @@
 #include "Squares.h"
 #include "Geometry.h"
 
+//1
+
 using namespace std;
 
 bool quadDone;

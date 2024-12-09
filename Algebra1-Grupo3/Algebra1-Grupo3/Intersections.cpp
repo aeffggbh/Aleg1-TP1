@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+//3
+
 /// <summary>
 /// Se buscan las intersecciones que se hicieron
 /// </summary>
